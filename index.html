@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Lengua de Marcas</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        *{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .contenedor{
+            width: 90%;
+            max-width: 1000px;   
+            display: grid;
+            grid-template-areas:"header header header"
+                                "navegador navegador navegador"
+                                "contenedor-wrap contenedor-lm contenedor-circulo"
+                                "contenedor-formulario contenedor-formulario contenedor-tabla"
+                                "footer footer footer";
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, auto);
+            margin: 15PX auto;
+            gap: 10px;
+        }
+        .header {
+            grid-area: header;
+            background-image: url(./fondo-header.jpg);
+            height: 50px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            text-shadow: 1px 1px greenyellow;
+        }
+        .navegador {
+            grid-area: navegador;
+            background-color: #2471A3;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+        .navegador p{
+            margin-left: 10px;
+        }
+        .navegador ul{
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            list-style: none;
+            margin-right: 10px;
+            height: 100%;      /* Asi consigo que el background color del hover me coja todo el alto del nav */
+            
+        }
+        .navegador li{ /* Si quito este display flex el texto me queda arriba y no centrado con el texto de la izquierda */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .navegador li:hover{
+            color: yellow;
+            background-color: cornflowerblue;
+            cursor: pointer; /* Efecto de que es un enlace pero no lo es, en el enunciado hay un cursor sobre el enlace, por eso lo pongo */
+        }
+        .contenedor-wrap{
+            grid-area: contenedor-wrap;
+            background-color: #D5D8DC;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            border-radius: 5px;
+        }
+        .wrap {
+            box-shadow: 15px;
+            display: flex;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.548);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin:10px 0 10px 0;
+        }
+        .wrap p{
+            margin: 0;
+            padding: 5px 10px;
+        }
+        .imagen-wrap {
+            width: 80px;
+            height: 80px;
+        }
+        .contenedor-lm {
+            grid-area: contenedor-lm;
+            background-color: #F7DC6F;
+            text-align: justify;
+            border-radius: 5px;
+
+            
+        }
+        .contenedor-lm p {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .contenedor-lm img{
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+
+        }
+        .contenedor-circulo {
+            grid-area: contenedor-circulo;
+            background-color: #82E0AA ;
+            text-align: justify;
+            border-radius: 5px;
+
+        }
+        .contenedor-circulo p {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .contenedor-circulo span {
+            color: red;
+            font-weight: bold;
+        }
+        .contenedor-circulo img {
+            width: 40%;
+            height: 40%;
+            display: flex;
+            margin: auto;
+            border-radius: 50%;
+        }
+        .contenedor-formulario {
+            grid-area: contenedor-formulario;
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.301);
+            
+        }
+        .contenedor-formulario form {
+            margin: 10px 0px 10px 0px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            
+        }
+        .contenedor-formulario label,input {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .contenedor-del-input {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .contenedor-del-input input{
+            width: 100%;
+            padding: 5px 10px;
+         
+        }
+        .btn {
+           padding: 5px 10px;
+           color: white;
+           background-color:  #29ff16 ;
+           border: none;
+           cursor: pointer;
+           font-size: 20px;
+        }
+        .btn:hover{
+            background-color:  #1ab30c ;
+        }
+        .contenedor-tabla {
+            grid-area: contenedor-tabla;
+            background-color: orange;
+            border-radius: 5px;
+        }
+        .contenedor-tabla select {
+            margin: 10px;
+            font-size: 15px;
+            border-radius: 5px;
+            background-color: #e3e5e7;
+        }
+        .contenedor-tabla table {
+            margin: 10% auto;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.548);
+        }
+        .contenedor-tabla thead {
+            background-color: black;
+            color: white;
+        }
+        .contenedor-tabla tbody {
+            background-color: #D5D8DC;
+        }
+        .contenedor-tabla tbody:hover {
+            background-color: #295794;
+            color: white;
+        }
+        .contenedor-tabla td {
+            padding: 5px 10px;
+        }
+        .nombre-tabla{
+            display: flex;
+            align-items: center;
+        }
+        .footer {
+            grid-area: footer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2471A3;
+            height: 50px;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        @media only screen and (max-width: 768px) {
+        .contenedor {
+            display: grid;
+            grid-template-areas:"header header header"
+                                "navegador navegador navegador"
+                                "contenedor-wrap contenedor-wrap contenedor-wrap"
+                                "contenedor-lm contenedor-lm contenedor-lm"
+                                "contenedor-circulo contenedor-circulo contenedor-circulo"
+                                "contenedor-formulario contenedor-formulario contenedor-formulario"
+                                "contenedor-tabla contenedor-tabla contenedor-tabla"
+                                "footer footer footer";
+             }
+         .contenedor-lm img{
+            width: 40%;
+            margin-bottom: 15px;
+        }
+        .contenedor-circulo img {
+            width: 100px; /*Si lo pongo en porcentaje no queda circular sino ovalado*/
+            height: 100px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+}
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <header class="header">
+            HTML+CSS. FLEXBOX Y GRID.
+        </header>
+        <nav class="navegador">
+            <p>EXAMEN 2ª Eval LM - DAW1</p>
+            <ul>
+                <li>Sobre Nosotros</li>
+                <li>Servicio</li>
+                <li>Contacto</li>
+            </ul>
+        </nav>
+        <div class="contenedor-wrap">
+            <div class="wrap">
+                <img src="./foto-hombre.png"
+                 alt="Imagen de un hombre"
+                 class="imagen-wrap">
+                 <p>AFJ</p>
+            </div>
+            <div class="wrap">
+                <img src="./globos.jpg"
+                 alt="Imagen de globos"
+                 class="imagen-wrap">
+                 <p>CTA</p>
+            </div>
+            <div class="wrap">
+                <img src="./rio.jpg"
+                 alt="Imagen de un rio"
+                 class="imagen-wrap">
+                 <p>AFJ</p>
+            </div>
+            <div class="wrap">
+                <img src="./fondo-header.jpg"
+                 alt="Imagen de un globo de noche sobre un monte"
+                 class="imagen-wrap">
+                 <p>ASE</p>
+            </div>
+            <div class="wrap">
+                <img src="./foto-hombre.png"
+                 alt="Imagen de un hombre"
+                 class="imagen-wrap">
+                 <p>WPX</p>
+            </div>         
+        </div>
+        <div class="contenedor-lm">
+            <p>Este examen corresponde a la segunda evaluación del módulo <span style="color:green; font-weight: bold; font-style: italic;">Lenguaje de Marcas y Sisteas de Gestión de Información</span> del primer curso del Ciclo Formativo
+            <span style="color:blue; font-style: italic; font-weight: bold;">Desarrollo de Apliaciones Web</span></p>
+            <img src="./imagen-lm.jfif" alt="imagen marcas">
+        </div>
+        <div class="contenedor-circulo">
+            <p>Se pueden tomar todos los apuntes que se estime oportuno pero
+                 <span>NO SE PERMITE COPIAR</span> ni <span>TOTAL</span> ni <span>PARCIALMENTE</span> de otro compañero.</p>
+            <img src="./gente copiando.jpg" alt="gente copiando">
+        </div>
+        <div class="contenedor-formulario">
+            <form action="">
+                <label for="usuario">
+                    Nombre de Usuario
+                    <div class="contenedor-del-input">
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="usuario" id="usuario" placeholder="Introducir nombre de usuario">
+                    </div>
+                </label>
+                <label for="pass">
+                    Contraseña
+                    <div class="contenedor-del-input">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="pass" id="pass" placeholder="Indtroducir contraseña">
+                    </div>
+                </label>
+                <label for="pass2">
+                    Contraseña
+                    <div class="contenedor-del-input">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" name="pass2" id="pass2" placeholder="Repetir contraseña">
+                    </div>
+                </label>
+                <input type="submit" value="Entrar" class="btn">
+            </form>
+        </div>
+        <div class="contenedor-tabla">
+            <select name="selector" id="selector" >
+                <option value="palomeras">Palomeras</option>
+                <option value="rm">Real Madrid</option>
+                <option value="google">Google</option>
+                <option value="nota" selected>Buena nota</option>
+            </select>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>Apellidos</td>
+                        <td>Edad</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="nombre-tabla"><span class="material-symbols-outlined">
+                            woman
+                            </span>Ana</td>
+                        <td>Garcia Lopez</td>
+                        <td>23</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td class="nombre-tabla"><span class="material-symbols-outlined">
+                            man
+                            </span>
+                            Luis</td>
+                        <td>Perez Gómez</td>
+                        <td>29</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td class="nombre-tabla"><span class="material-symbols-outlined">
+                            woman
+                            </span>Ana</td>
+                        <td>Garcia Lopez</td>
+                        <td>23</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td class="nombre-tabla"><span class="material-symbols-outlined">
+                            man
+                            </span>
+                            Luis</td>
+                        <td>Perez Gómez</td>
+                        <td>29</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer class="footer">Martes, 14 de Marzo de 2023. Miguel Piñán Barberán.</footer>
+    </div>
+</body>
+</html>
